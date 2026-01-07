@@ -1,0 +1,138 @@
+.page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-8) var(--spacing-4);
+  background-color: var(--color-neutral-100);
+}
+
+.container {
+  width: 100%;
+  max-width: 480px;
+}
+
+.card {
+  background-color: white;
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  box-shadow: var(--shadow-lg);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+  margin-bottom: var(--spacing-2);
+}
+
+.subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+  margin-bottom: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.passwordField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.passwordToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-neutral-400);
+  cursor: pointer;
+}
+
+.passwordToggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.passwordStrength {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.strengthBars {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.strengthBar {
+  height: 4px;
+  flex: 1;
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast);
+}
+
+.strength1 {
+  background-color: var(--color-error-500);
+}
+
+.strength2 {
+  background-color: var(--color-error-500);
+}
+
+.strength3 {
+  background-color: var(--color-warning-500);
+}
+
+.strength4 {
+  background-color: var(--color-success-500);
+}
+
+.strength5 {
+  background-color: var(--color-success-600);
+}
+
+.strengthText {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-500);
+  min-width: 32px;
+}
+
+.agreements {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background-color: var(--color-neutral-50);
+  border-radius: var(--radius-lg);
+}
+
+.agreements a {
+  color: var(--color-primary-600);
+}
+
+.loginPrompt {
+  text-align: center;
+  margin-top: var(--spacing-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+  margin-bottom: 0;
+}
+
+.loginLink {
+  color: var(--color-primary-600);
+  font-weight: var(--font-weight-medium);
+}
