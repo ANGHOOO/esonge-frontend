@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 import {
   ProductImageGallery,
   ProductInfo,
@@ -9,18 +10,24 @@ import {
   RelatedProducts,
 } from '@/components/product';
 import type { TabId } from '@/components/product';
+import { useCart, useWishlist } from '@/stores';
 import { getProductById, type Product } from '@/mocks/products';
+import { ROUTES } from '@/constants/routes';
 import styles from './ProductDetailPage.module.css';
 
 export function ProductDetailPage() {
   const { productId } = useParams<{ productId: string }>();
+  const navigate = useNavigate();
   const tabsRef = useRef<HTMLDivElement>(null);
+  const { addItem } = useCart();
+  const { isInWishlist, toggleItem: toggleWishlist } = useWishlist();
 
   const [product, setProduct] = useState<Product | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
-  const [isWishlisted, setIsWishlisted] = useState(false);
   const [activeTab, setActiveTab] = useState<TabId>('description');
+
+  const isWishlisted = productId ? isInWishlist(productId) : false;
 
   useEffect(() => {
     const loadProduct = async () => {
@@ -47,17 +54,33 @@ export function ProductDetailPage() {
   };
 
   const handleAddToCart = () => {
-    console.log('Add to cart:', { productId, quantity });
-    // TODO: Implement cart functionality
+    if (!product) return;
+    if (product.stock === 0) {
+      toast.error('품절된 상품입니다.');
+      return;
+    }
+    addItem(product, quantity);
+    toast.success(`${product.name}이(가) 장바구니에 추가되었습니다.`);
   };
 
   const handleBuyNow = () => {
-    console.log('Buy now:', { productId, quantity });
-    // TODO: Navigate to checkout
+    if (!product) return;
+    if (product.stock === 0) {
+      toast.error('품절된 상품입니다.');
+      return;
+    }
+    addItem(product, quantity);
+    navigate(ROUTES.CART);
   };
 
   const handleWishlistToggle = () => {
-    setIsWishlisted((prev) => !prev);
+    if (!productId) return;
+    toggleWishlist(productId);
+    if (isWishlisted) {
+      toast.success('찜 목록에서 삭제되었습니다.');
+    } else {
+      toast.success('찜 목록에 추가되었습니다.');
+    }
   };
 
   const handleReviewClick = () => {

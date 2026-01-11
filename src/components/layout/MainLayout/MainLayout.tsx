@@ -2,6 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 import { MobileDrawer } from '../MobileDrawer';
+import { useCart, useWishlist, useAuth } from '@/stores';
 import styles from './MainLayout.module.css';
 
 export interface MainLayoutProps {
@@ -11,11 +12,13 @@ export interface MainLayoutProps {
 
 export function MainLayout({ children, hideFooter = false }: MainLayoutProps) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { getTotalItems: getCartTotal } = useCart();
+  const { getTotalItems: getWishlistTotal } = useWishlist();
+  const { user, isAuthenticated } = useAuth();
 
-  // TODO: Replace with actual auth state from Zustand store
-  const isAuthenticated = false;
-  const userName = '';
-  const cartItemCount = 0;
+  const userName = user?.name || '';
+  const cartItemCount = getCartTotal();
+  const wishlistItemCount = getWishlistTotal();
 
   return (
     <div className={styles.layout}>
@@ -23,6 +26,7 @@ export function MainLayout({ children, hideFooter = false }: MainLayoutProps) {
         isAuthenticated={isAuthenticated}
         userName={userName}
         cartItemCount={cartItemCount}
+        wishlistItemCount={wishlistItemCount}
         onMenuClick={() => setIsDrawerOpen(true)}
       />
 

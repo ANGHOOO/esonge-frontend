@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Toaster } from 'sonner';
 import { queryClient } from './services/query/client';
 import { ErrorBoundary } from './components/error/ErrorBoundary';
 import { MainLayout } from './components/layout';
@@ -14,6 +15,8 @@ import {
   ProductsPage,
   ProductDetailPage,
   CartPage,
+  WishlistPage,
+  MyPage,
   NotFoundPage,
 } from './pages';
 
@@ -52,6 +55,10 @@ function App() {
 
                 {/* Shopping Routes */}
                 <Route path={ROUTES.CART} element={<CartPage />} />
+                <Route path={ROUTES.WISHLIST} element={<WishlistPage />} />
+
+                {/* User Routes */}
+                <Route path={ROUTES.PROFILE} element={<MyPage />} />
 
                 {/* 404 */}
                 <Route path="*" element={<NotFoundPage />} />
@@ -60,6 +67,7 @@ function App() {
           </MainLayout>
         </BrowserRouter>
         <ReactQueryDevtools initialIsOpen={false} />
+        <Toaster position="top-center" richColors />
       </QueryClientProvider>
     </ErrorBoundary>
   );

@@ -1,0 +1,223 @@
+.item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto auto;
+  gap: var(--spacing-4);
+  align-items: start;
+  padding: var(--spacing-4);
+  border-bottom: 1px solid var(--color-neutral-200);
+  position: relative;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 767px) {
+  .item {
+    grid-template-columns: 80px 1fr auto;
+    grid-template-rows: auto auto;
+  }
+}
+
+/* Image */
+.imageLink {
+  flex-shrink: 0;
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  background-color: var(--color-neutral-100);
+}
+
+.imagePlaceholder {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-neutral-100);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-400);
+}
+
+/* Info */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  min-width: 0;
+}
+
+.category {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-500);
+}
+
+.name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-900);
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.name:hover {
+  color: var(--color-primary-600);
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-1);
+}
+
+.originalPrice {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-400);
+  text-decoration: line-through;
+}
+
+.price {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-900);
+}
+
+/* Stock Warning */
+.stockWarning,
+.stockError {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-size: var(--font-size-xs);
+  margin-top: var(--spacing-1);
+}
+
+.stockWarning {
+  color: var(--color-warning-600);
+}
+
+.stockError {
+  color: var(--color-error-600);
+}
+
+.warningIcon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Quantity Controls */
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-1);
+}
+
+@media (max-width: 767px) {
+  .quantityControls {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+  }
+}
+
+.quantityButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-neutral-600);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.15s ease;
+}
+
+.quantityButton:hover:not(:disabled) {
+  background-color: var(--color-neutral-100);
+}
+
+.quantityButton:disabled {
+  color: var(--color-neutral-300);
+  cursor: not-allowed;
+}
+
+.quantityButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.quantity {
+  min-width: 32px;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Subtotal */
+.subtotal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacing-1);
+  min-width: 100px;
+}
+
+@media (max-width: 767px) {
+  .subtotal {
+    grid-column: 3;
+    grid-row: 2;
+  }
+}
+
+.subtotalLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-500);
+}
+
+.subtotalPrice {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+}
+
+/* Remove Button */
+.removeButton {
+  position: absolute;
+  top: var(--spacing-2);
+  right: var(--spacing-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-neutral-400);
+  border-radius: var(--radius-full);
+  transition: all 0.15s ease;
+}
+
+.removeButton:hover {
+  background-color: var(--color-error-50);
+  color: var(--color-error-500);
+}
+
+.removeButton svg {
+  width: 18px;
+  height: 18px;
+}

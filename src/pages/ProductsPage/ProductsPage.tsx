@@ -1,10 +1,11 @@
 import { useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ShoppingBag } from 'lucide-react';
+import { toast } from 'sonner';
 import { Breadcrumbs } from '@/components/layout';
 import { EmptyState } from '@/components/ui';
 import { ProductGrid, FilterPanel, SortDropdown, ViewToggle } from '@/components/product';
-import { useProductFilters } from '@/stores/useProductFilters';
+import { useProductFilters, useCart, useWishlist } from '@/stores';
 import { products, CATEGORIES, type Product } from '@/mocks/products';
 import { ROUTES } from '@/constants/routes';
 import styles from './ProductsPage.module.css';
@@ -29,6 +30,9 @@ export function ProductsPage() {
     getActiveFiltersCount,
     setFilter,
   } = useProductFilters();
+
+  const { addItem } = useCart();
+  const { productIds: wishlistIds, toggleItem: toggleWishlist, isInWishlist } = useWishlist();
 
   // Sync URL category param with filters
   useEffect(() => {
@@ -135,13 +139,21 @@ export function ProductsPage() {
   const activeFiltersCount = getActiveFiltersCount();
 
   const handleAddToCart = (product: Product) => {
-    // TODO: Implement cart functionality
-    console.log('Add to cart:', product.id);
+    if (product.stock === 0) {
+      toast.error('품절된 상품입니다.');
+      return;
+    }
+    addItem(product);
+    toast.success(`${product.name}이(가) 장바구니에 추가되었습니다.`);
   };
 
   const handleToggleWishlist = (product: Product) => {
-    // TODO: Implement wishlist functionality
-    console.log('Toggle wishlist:', product.id);
+    toggleWishlist(product.id);
+    if (isInWishlist(product.id)) {
+      toast.success('찜 목록에서 삭제되었습니다.');
+    } else {
+      toast.success('찜 목록에 추가되었습니다.');
+    }
   };
 
   return (
@@ -185,7 +197,7 @@ export function ProductsPage() {
                   products={paginatedProducts}
                   onAddToCart={handleAddToCart}
                   onToggleWishlist={handleToggleWishlist}
-                  wishlistIds={[]}
+                  wishlistIds={wishlistIds}
                 />
 
                 {/* Pagination */}
