@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Smartphone, Printer } from 'lucide-react';
 import { ROUTES } from '@/constants/routes';
 import styles from './Footer.module.css';
 
@@ -24,14 +24,14 @@ export function Footer() {
                 </a>
               </div>
               <div className={styles.contactItem}>
-                <Mail className={styles.contactIcon} />
-                <a href="mailto:support@esonge.co.kr" className={styles.contactLink}>
-                  support@esonge.co.kr
+                <Smartphone className={styles.contactIcon} />
+                <a href="tel:010-3811-6000" className={styles.contactLink}>
+                  010-3811-6000
                 </a>
               </div>
               <div className={styles.contactItem}>
-                <MapPin className={styles.contactIcon} />
-                <span className={styles.contactText}>강원도</span>
+                <Printer className={styles.contactIcon} />
+                <span className={styles.contactText}>Fax: 033-644-7063</span>
               </div>
             </div>
           </div>
@@ -46,18 +46,18 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to={`${ROUTES.PRODUCTS}?category=seafood`} className={styles.link}>
-                  수산물
+                <Link to={`${ROUTES.PRODUCTS}?category=premium-gift`} className={styles.link}>
+                  선물용 명품
                 </Link>
               </li>
               <li>
-                <Link to={`${ROUTES.PRODUCTS}?category=dried-seafood`} className={styles.link}>
-                  건수산물
+                <Link to={`${ROUTES.PRODUCTS}?category=natural-songi`} className={styles.link}>
+                  자연산 송이 가정용
                 </Link>
               </li>
               <li>
-                <Link to={`${ROUTES.PRODUCTS}?category=agricultural`} className={styles.link}>
-                  농산물
+                <Link to={`${ROUTES.PRODUCTS}?category=frozen-mushroom`} className={styles.link}>
+                  냉동송이/능이버섯
                 </Link>
               </li>
             </ul>
@@ -113,7 +113,7 @@ export function Footer() {
             </Link>
           </div>
           <p className={styles.copyright}>
-            &copy; {currentYear} Esonge 동성유통. All rights reserved.
+            &copy; {currentYear} 강원송이총판 동성유통. All rights reserved.
           </p>
         </div>
       </div>

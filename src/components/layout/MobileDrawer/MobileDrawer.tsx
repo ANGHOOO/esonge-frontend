@@ -15,14 +15,13 @@ import { Button } from '@/components/ui';
 import styles from './MobileDrawer.module.css';
 
 const CATEGORIES = [
-  { id: 'seafood', name: '수산물', slug: 'seafood' },
-  { id: 'dried-seafood', name: '건수산물', slug: 'dried-seafood' },
-  { id: 'agricultural', name: '농산물', slug: 'agricultural' },
-  { id: 'livestock', name: '축산물', slug: 'livestock' },
-  { id: 'processed', name: '가공식품', slug: 'processed' },
-  { id: 'seasoning', name: '양념/장류', slug: 'seasoning' },
-  { id: 'living', name: '생활용품', slug: 'living' },
-  { id: 'health', name: '건강식품', slug: 'health' },
+  { id: 'premium-gift', name: '선물용 명품', slug: 'premium-gift' },
+  { id: 'natural-songi', name: '자연산 송이 가정용', slug: 'natural-songi' },
+  { id: 'frozen-mushroom', name: '냉동송이/능이버섯', slug: 'frozen-mushroom' },
+  { id: 'wild-mushroom', name: '능이/싸리/곰버섯', slug: 'wild-mushroom' },
+  { id: 'wild-ginseng', name: '산삼/산양산삼', slug: 'wild-ginseng' },
+  { id: 'deodeok-doraji', name: '더덕/도라지', slug: 'deodeok-doraji' },
+  { id: 'apple-plum', name: '사과/자두', slug: 'apple-plum' },
 ];
 
 export interface MobileDrawerProps {

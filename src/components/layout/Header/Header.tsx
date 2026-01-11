@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Menu, Search, ShoppingCart, User, X } from 'lucide-react';
 import { ROUTES } from '@/constants/routes';
 import { Button } from '@/components/ui';
+import { SearchBar } from '@/components/product';
 import styles from './Header.module.css';
 
 export interface HeaderProps {
@@ -20,16 +21,6 @@ export function Header({
 }: HeaderProps) {
   const navigate = useNavigate();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`${ROUTES.PRODUCTS}?search=${encodeURIComponent(searchQuery.trim())}`);
-      setSearchQuery('');
-      setIsSearchOpen(false);
-    }
-  };
 
   return (
     <header className={styles.header}>
@@ -46,7 +37,7 @@ export function Header({
 
         {/* Logo */}
         <Link to={ROUTES.HOME} className={styles.logo}>
-          <span className={styles.logoText}>Esonge</span>
+          <span className={styles.logoText}>강원송이총판</span>
           <span className={styles.logoSubtext}>동성유통</span>
         </Link>
 
@@ -55,33 +46,24 @@ export function Header({
           <Link to={ROUTES.PRODUCTS} className={styles.navLink}>
             전체 상품
           </Link>
-          <Link to={`${ROUTES.PRODUCTS}?category=seafood`} className={styles.navLink}>
-            수산물
+          <Link to={`${ROUTES.PRODUCTS}?category=premium-gift`} className={styles.navLink}>
+            선물용 명품
           </Link>
-          <Link to={`${ROUTES.PRODUCTS}?category=dried-seafood`} className={styles.navLink}>
-            건수산물
+          <Link to={`${ROUTES.PRODUCTS}?category=natural-songi`} className={styles.navLink}>
+            자연산 송이
           </Link>
-          <Link to={`${ROUTES.PRODUCTS}?category=agricultural`} className={styles.navLink}>
-            농산물
+          <Link to={`${ROUTES.PRODUCTS}?category=frozen-mushroom`} className={styles.navLink}>
+            냉동송이/능이
           </Link>
-          <Link to={`${ROUTES.PRODUCTS}?category=processed`} className={styles.navLink}>
-            가공식품
+          <Link to={`${ROUTES.PRODUCTS}?category=wild-ginseng`} className={styles.navLink}>
+            산삼/산양산삼
           </Link>
         </nav>
 
         {/* Desktop Search Bar */}
-        <form className={styles.searchForm} onSubmit={handleSearchSubmit}>
-          <div className={styles.searchWrapper}>
-            <Search className={styles.searchIcon} />
-            <input
-              type="text"
-              className={styles.searchInput}
-              placeholder="상품 검색..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-        </form>
+        <div className={styles.searchContainer}>
+          <SearchBar />
+        </div>
 
         {/* Actions */}
         <div className={styles.actions}>
@@ -123,19 +105,7 @@ export function Header({
       {/* Mobile Search Bar */}
       {isSearchOpen && (
         <div className={styles.mobileSearch}>
-          <form onSubmit={handleSearchSubmit}>
-            <div className={styles.mobileSearchWrapper}>
-              <Search className={styles.searchIcon} />
-              <input
-                type="text"
-                className={styles.mobileSearchInput}
-                placeholder="상품 검색..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                autoFocus
-              />
-            </div>
-          </form>
+          <SearchBar autoFocus onClose={() => setIsSearchOpen(false)} />
         </div>
       )}
     </header>

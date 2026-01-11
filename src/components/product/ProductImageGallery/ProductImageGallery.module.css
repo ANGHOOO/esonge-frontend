@@ -1,0 +1,338 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+/* Main Image */
+.mainImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color-neutral-100);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.mainImageWrapper:hover .mainImage {
+  transform: scale(1.05);
+}
+
+.imagePlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-400);
+}
+
+.imagePlaceholder svg {
+  width: 64px;
+  height: 64px;
+}
+
+/* Zoom indicator */
+.zoomIndicator {
+  position: absolute;
+  bottom: var(--spacing-3);
+  right: var(--spacing-3);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-2) var(--spacing-3);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: var(--font-size-xs);
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.mainImageWrapper:hover .zoomIndicator {
+  opacity: 1;
+}
+
+.zoomIndicator svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Navigation Arrows */
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    background-color 0.2s ease;
+  z-index: 10;
+}
+
+.mainImageWrapper:hover .navButton {
+  opacity: 1;
+}
+
+.navButton:hover {
+  background-color: white;
+}
+
+.navButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.navButton svg {
+  width: 20px;
+  height: 20px;
+  color: var(--color-neutral-700);
+}
+
+.prevButton {
+  left: var(--spacing-3);
+}
+
+.nextButton {
+  right: var(--spacing-3);
+}
+
+/* Thumbnail List */
+.thumbnailList {
+  display: flex;
+  gap: var(--spacing-2);
+  overflow-x: auto;
+  padding-bottom: var(--spacing-2);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-neutral-300) transparent;
+}
+
+.thumbnailList::-webkit-scrollbar {
+  height: 6px;
+}
+
+.thumbnailList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.thumbnailList::-webkit-scrollbar-thumb {
+  background-color: var(--color-neutral-300);
+  border-radius: 3px;
+}
+
+.thumbnailButton {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  padding: 0;
+  background: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.thumbnailButton:hover {
+  border-color: var(--color-neutral-300);
+}
+
+.thumbnailButton.active {
+  border-color: var(--color-primary-500);
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Lightbox Modal */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.lightboxContent {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.lightboxImage {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.lightboxClose {
+  position: absolute;
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.lightboxClose:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.lightboxClose svg {
+  width: 24px;
+  height: 24px;
+}
+
+.lightboxNav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.lightboxNav:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.lightboxNav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.lightboxNav svg {
+  width: 24px;
+  height: 24px;
+}
+
+.lightboxPrev {
+  left: var(--spacing-4);
+}
+
+.lightboxNext {
+  right: var(--spacing-4);
+}
+
+.lightboxCounter {
+  position: absolute;
+  bottom: var(--spacing-4);
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: var(--font-size-sm);
+}
+
+/* Mobile swipe indicator */
+.swipeIndicator {
+  display: none;
+  position: absolute;
+  bottom: var(--spacing-3);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--spacing-1) var(--spacing-3);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: var(--font-size-xs);
+  border-radius: var(--radius-full);
+}
+
+/* Image dots for mobile */
+.imageDots {
+  display: none;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) 0;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-neutral-300);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dot.active {
+  background-color: var(--color-primary-500);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    gap: var(--spacing-2);
+  }
+
+  .mainImageWrapper {
+    border-radius: 0;
+  }
+
+  .navButton {
+    display: none;
+  }
+
+  .zoomIndicator {
+    display: none;
+  }
+
+  .thumbnailList {
+    display: none;
+  }
+
+  .imageDots {
+    display: flex;
+  }
+
+  .swipeIndicator {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .thumbnailButton {
+    width: 80px;
+    height: 80px;
+  }
+}

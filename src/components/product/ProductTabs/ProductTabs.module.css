@@ -1,0 +1,337 @@
+.container {
+  width: 100%;
+}
+
+/* Tab Navigation */
+.tabNav {
+  display: flex;
+  border-bottom: 1px solid var(--color-neutral-200);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tabNav::-webkit-scrollbar {
+  display: none;
+}
+
+.tabButton {
+  flex-shrink: 0;
+  position: relative;
+  padding: var(--spacing-4) var(--spacing-6);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-500);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.tabButton:hover {
+  color: var(--color-neutral-700);
+}
+
+.tabButton.active {
+  color: var(--color-primary-600);
+}
+
+.tabButton.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-primary-600);
+}
+
+.tabBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 var(--spacing-1);
+  margin-left: var(--spacing-1);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-500);
+  background-color: var(--color-neutral-100);
+  border-radius: var(--radius-full);
+}
+
+.tabButton.active .tabBadge {
+  color: var(--color-primary-600);
+  background-color: var(--color-primary-100);
+}
+
+/* Tab Content */
+.tabContent {
+  padding: var(--spacing-6) 0;
+}
+
+/* Description Tab */
+.description {
+  white-space: pre-wrap;
+  line-height: 1.8;
+  color: var(--color-neutral-700);
+}
+
+/* Info Section */
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.infoTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-900);
+  margin: 0;
+}
+
+.infoTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.infoTable th,
+.infoTable td {
+  padding: var(--spacing-3) var(--spacing-4);
+  text-align: left;
+  border-bottom: 1px solid var(--color-neutral-100);
+}
+
+.infoTable th {
+  width: 120px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-500);
+  background-color: var(--color-neutral-50);
+}
+
+.infoTable td {
+  color: var(--color-neutral-900);
+}
+
+/* Nutrition Table */
+.nutritionTable {
+  width: 100%;
+  max-width: 400px;
+  border-collapse: collapse;
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.nutritionTable th,
+.nutritionTable td {
+  padding: var(--spacing-3) var(--spacing-4);
+  text-align: left;
+  border-bottom: 1px solid var(--color-neutral-200);
+}
+
+.nutritionTable tr:last-child th,
+.nutritionTable tr:last-child td {
+  border-bottom: none;
+}
+
+.nutritionTable th {
+  width: 50%;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-700);
+  background-color: var(--color-neutral-50);
+}
+
+.nutritionTable td {
+  color: var(--color-neutral-900);
+}
+
+/* Review Tab */
+.reviewSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.reviewSummary {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6);
+  background-color: var(--color-neutral-50);
+  border-radius: var(--radius-lg);
+}
+
+.reviewScore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.scoreValue {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+}
+
+.scoreStars {
+  display: flex;
+  gap: 2px;
+}
+
+.scoreStars svg {
+  width: 20px;
+  height: 20px;
+  color: var(--color-warning-400);
+}
+
+.reviewCount {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+.emptyReviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-8);
+  text-align: center;
+}
+
+.emptyIcon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-neutral-300);
+}
+
+.emptyText {
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-500);
+}
+
+/* QA Tab */
+.qaSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.qaHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.qaTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-900);
+  margin: 0;
+}
+
+.qaButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary-600);
+  background-color: white;
+  border: 1px solid var(--color-primary-300);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.qaButton:hover {
+  background-color: var(--color-primary-50);
+}
+
+.qaButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.emptyQa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-8);
+  text-align: center;
+}
+
+/* Shipping Tab */
+.shippingSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.shippingBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.shippingTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-900);
+  margin: 0;
+}
+
+.shippingContent {
+  line-height: 1.8;
+  color: var(--color-neutral-700);
+}
+
+.shippingList {
+  list-style: disc;
+  padding-left: var(--spacing-5);
+  line-height: 1.8;
+  color: var(--color-neutral-700);
+}
+
+.shippingList li {
+  margin-bottom: var(--spacing-2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tabButton {
+    padding: var(--spacing-3) var(--spacing-4);
+    font-size: var(--font-size-sm);
+  }
+
+  .tabContent {
+    padding: var(--spacing-4) 0;
+  }
+
+  .reviewSummary {
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+
+  .infoTable th {
+    width: 100px;
+  }
+
+  .infoTable th,
+  .infoTable td {
+    padding: var(--spacing-2) var(--spacing-3);
+    font-size: var(--font-size-sm);
+  }
+}

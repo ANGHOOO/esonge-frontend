@@ -7,7 +7,15 @@ import { ErrorBoundary } from './components/error/ErrorBoundary';
 import { MainLayout } from './components/layout';
 import { Spinner } from './components/ui';
 import { ROUTES } from './constants/routes';
-import { HomePage, LoginPage, RegisterPage, ProductsPage, CartPage, NotFoundPage } from './pages';
+import {
+  HomePage,
+  LoginPage,
+  RegisterPage,
+  ProductsPage,
+  ProductDetailPage,
+  CartPage,
+  NotFoundPage,
+} from './pages';
 
 // Loading fallback component
 function PageLoading() {
@@ -40,6 +48,7 @@ function App() {
 
                 {/* Product Routes */}
                 <Route path={ROUTES.PRODUCTS} element={<ProductsPage />} />
+                <Route path="/products/:productId" element={<ProductDetailPage />} />
 
                 {/* Shopping Routes */}
                 <Route path={ROUTES.CART} element={<CartPage />} />

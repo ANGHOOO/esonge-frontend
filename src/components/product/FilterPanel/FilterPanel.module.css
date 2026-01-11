@@ -1,0 +1,134 @@
+.panel {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-4);
+  padding-bottom: var(--spacing-3);
+  border-bottom: 1px solid var(--color-neutral-200);
+}
+
+.title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-900);
+  margin: 0;
+}
+
+.clearButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.clearButton:hover {
+  color: var(--color-neutral-700);
+  background-color: var(--color-neutral-100);
+}
+
+.clearIcon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Sections */
+.section {
+  margin-bottom: var(--spacing-4);
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-700);
+  margin: 0 0 var(--spacing-2) 0;
+}
+
+/* Checkbox Group */
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* Price Ranges */
+.priceRanges {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.priceButton {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-3);
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+  background-color: var(--color-neutral-50);
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.priceButton:hover {
+  border-color: var(--color-neutral-300);
+  background-color: var(--color-neutral-100);
+}
+
+.priceButton.active {
+  border-color: var(--color-primary-500);
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-700);
+}
+
+/* Mobile Filter Button */
+.mobileButton {
+  position: relative;
+}
+
+.filterBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 var(--spacing-1);
+  background-color: var(--color-primary-500);
+  color: var(--color-white);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  border-radius: 9999px;
+  margin-left: var(--spacing-1);
+}
+
+/* Responsive - Hide on Mobile */
+@media (max-width: 768px) {
+  .panel {
+    display: none;
+  }
+}

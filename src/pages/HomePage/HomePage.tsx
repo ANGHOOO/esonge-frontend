@@ -5,14 +5,13 @@ import { Button } from '@/components/ui';
 import styles from './HomePage.module.css';
 
 const CATEGORIES = [
-  { id: 'seafood', name: '수산물', slug: 'seafood', emoji: '' },
-  { id: 'dried-seafood', name: '건수산물', slug: 'dried-seafood', emoji: '' },
-  { id: 'agricultural', name: '농산물', slug: 'agricultural', emoji: '' },
-  { id: 'livestock', name: '축산물', slug: 'livestock', emoji: '' },
-  { id: 'processed', name: '가공식품', slug: 'processed', emoji: '' },
-  { id: 'seasoning', name: '양념/장류', slug: 'seasoning', emoji: '' },
-  { id: 'living', name: '생활용품', slug: 'living', emoji: '' },
-  { id: 'health', name: '건강식품', slug: 'health', emoji: '' },
+  { id: 'premium-gift', name: '선물용 명품', slug: 'premium-gift', emoji: '🎁' },
+  { id: 'natural-songi', name: '자연산 송이 가정용', slug: 'natural-songi', emoji: '🍄' },
+  { id: 'frozen-mushroom', name: '냉동송이/능이버섯', slug: 'frozen-mushroom', emoji: '❄️' },
+  { id: 'wild-mushroom', name: '능이/싸리/곰버섯', slug: 'wild-mushroom', emoji: '🌿' },
+  { id: 'wild-ginseng', name: '산삼/산양산삼', slug: 'wild-ginseng', emoji: '🌱' },
+  { id: 'deodeok-doraji', name: '더덕/도라지', slug: 'deodeok-doraji', emoji: '🥕' },
+  { id: 'apple-plum', name: '사과/자두', slug: 'apple-plum', emoji: '🍎' },
 ];
 
 const FEATURES = [
