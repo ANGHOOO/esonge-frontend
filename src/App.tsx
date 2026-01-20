@@ -17,6 +17,8 @@ import {
   CartPage,
   WishlistPage,
   MyPage,
+  OrdersPage,
+  OrderDetailPage,
   NotFoundPage,
 } from './pages';
 
@@ -59,6 +61,8 @@ function App() {
 
                 {/* User Routes */}
                 <Route path={ROUTES.PROFILE} element={<MyPage />} />
+                <Route path={ROUTES.ORDERS} element={<OrdersPage />} />
+                <Route path="/orders/:orderId" element={<OrderDetailPage />} />
 
                 {/* 404 */}
                 <Route path="*" element={<NotFoundPage />} />
