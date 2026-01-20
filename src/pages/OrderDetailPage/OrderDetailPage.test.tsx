@@ -43,12 +43,15 @@ const renderOrderDetailPage = (orderId: string) => {
   );
 };
 
+// Mock orderId variable that can be changed per test
+let mockOrderId = 'order-001';
+
 // Mock the useParams hook
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom');
   return {
     ...actual,
-    useParams: () => ({ orderId: 'order-001' }),
+    useParams: () => ({ orderId: mockOrderId }),
   };
 });
 
@@ -68,6 +71,7 @@ const createMockOrdersState = (orders: typeof mockOrders, isLoading = false) => 
 
 describe('OrderDetailPage', () => {
   beforeEach(() => {
+    mockOrderId = 'order-001'; // Reset to default orderId
     act(() => {
       useAuth.setState({ isAuthenticated: false, user: null });
       useOrders.setState({ orders: [], isLoading: false });
@@ -186,8 +190,8 @@ describe('OrderDetailPage', () => {
 
   describe('shipping tracking', () => {
     it('should display tracking info for shipping orders', () => {
-      // Mock useParams to return order-002 (shipping status)
-      vi.mocked(vi.importActual('react-router-dom')).useParams = () => ({ orderId: 'order-002' });
+      // Set mockOrderId to order-002 (shipping status)
+      mockOrderId = 'order-002';
 
       act(() => {
         useAuth.setState({ isAuthenticated: true, user: mockUser });
