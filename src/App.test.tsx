@@ -5,11 +5,13 @@ import App from './App';
 describe('App', () => {
   it('renders without crashing', () => {
     render(<App />);
-    expect(screen.getByText(/Esonge Shopping Mall/i)).toBeInTheDocument();
+    // 여러 요소가 있을 수 있으므로 getAllByText 사용
+    const elements = screen.getAllByText(/강원송이총판/i);
+    expect(elements.length).toBeGreaterThan(0);
   });
 
-  it('displays setup completion message', () => {
+  it('renders main layout with header', () => {
     render(<App />);
-    expect(screen.getByText(/환경 설정이 완료되었습니다/i)).toBeInTheDocument();
+    expect(screen.getByRole('banner')).toBeInTheDocument();
   });
 });

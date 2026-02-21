@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Menu, Search, ShoppingCart, User, X } from 'lucide-react';
+import { Menu, Search, ShoppingCart, Heart, User, X } from 'lucide-react';
 import { ROUTES } from '@/constants/routes';
 import { Button } from '@/components/ui';
 import { SearchBar } from '@/components/product';
@@ -8,6 +8,7 @@ import styles from './Header.module.css';
 
 export interface HeaderProps {
   cartItemCount?: number;
+  wishlistItemCount?: number;
   isAuthenticated?: boolean;
   userName?: string;
   onMenuClick?: () => void;
@@ -15,6 +16,7 @@ export interface HeaderProps {
 
 export function Header({
   cartItemCount = 0,
+  wishlistItemCount = 0,
   isAuthenticated = false,
   userName,
   onMenuClick,
@@ -76,6 +78,14 @@ export function Header({
           >
             {isSearchOpen ? <X /> : <Search />}
           </button>
+
+          {/* Wishlist */}
+          <Link to={ROUTES.WISHLIST} className={styles.iconButton} aria-label="찜 목록">
+            <Heart />
+            {wishlistItemCount > 0 && (
+              <span className={styles.wishlistBadge}>{wishlistItemCount}</span>
+            )}
+          </Link>
 
           {/* Cart */}
           <Link to={ROUTES.CART} className={styles.cartButton} aria-label="장바구니">

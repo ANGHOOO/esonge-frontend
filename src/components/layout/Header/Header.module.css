@@ -123,6 +123,7 @@
 }
 
 .iconButton {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,21 +135,34 @@
   cursor: pointer;
   border-radius: var(--radius-lg);
   transition: background-color var(--transition-fast);
+  text-decoration: none;
 }
 
 .iconButton:hover {
   background-color: var(--color-neutral-100);
 }
 
-@media (min-width: 1024px) {
-  .iconButton {
-    display: none;
-  }
-}
-
 .iconButton svg {
   width: 20px;
   height: 20px;
+}
+
+/* Wishlist Badge */
+.wishlistBadge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  color: white;
+  background-color: var(--color-primary-500);
+  border-radius: var(--radius-full);
 }
 
 /* Cart Button */

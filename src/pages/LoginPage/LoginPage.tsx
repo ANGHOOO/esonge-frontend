@@ -4,8 +4,10 @@ import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { toast } from 'sonner';
 import { ROUTES } from '@/constants/routes';
 import { Button, Input, Checkbox } from '@/components/ui';
+import { useAuth } from '@/stores';
 import styles from './LoginPage.module.css';
 
 const loginSchema = z.object({
@@ -18,6 +20,7 @@ type LoginFormData = z.infer<typeof loginSchema>;
 
 export function LoginPage() {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -36,11 +39,15 @@ export function LoginPage() {
 
   const onSubmit = async (data: LoginFormData) => {
     setIsLoading(true);
-    // TODO: Implement actual login with Zustand auth store
-    console.log('Login data:', data);
-    await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
+    const success = await login(data.email, data.password);
     setIsLoading(false);
-    navigate(ROUTES.HOME);
+
+    if (success) {
+      toast.success('로그인 되었습니다.');
+      navigate(ROUTES.HOME);
+    } else {
+      toast.error('이메일 또는 비밀번호가 올바르지 않습니다.');
+    }
   };
 
   return (
@@ -122,6 +129,12 @@ export function LoginPage() {
               회원가입
             </Link>
           </p>
+
+          <div className={styles.demoInfo}>
+            <p className={styles.demoTitle}>데모 계정</p>
+            <p className={styles.demoText}>이메일: demo@esonge.com</p>
+            <p className={styles.demoText}>비밀번호: 아무거나</p>
+          </div>
         </div>
       </div>
     </div>
