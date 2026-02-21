@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Truck, Shield, Phone } from 'lucide-react';
+import { Truck, Shield, Phone } from 'lucide-react';
 import { ROUTES } from '@/constants/routes';
 import { Button } from '@/components/ui';
+import { HeroBanner } from './HeroBanner';
 import styles from './HomePage.module.css';
 
 const CATEGORIES = [
@@ -36,29 +37,7 @@ export function HomePage() {
   return (
     <div className={styles.page}>
       {/* Hero Section */}
-      <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>
-            강원도 청정 자연에서
-            <br />
-            직접 전하는 신선함
-          </h1>
-          <p className={styles.heroDescription}>
-            동성유통에서 엄선한 최고 품질의 수산물, 농산물을 만나보세요.
-            <br />
-            산지 직송으로 신선함을 그대로 전달합니다.
-          </p>
-          <div className={styles.heroActions}>
-            <Button
-              size="lg"
-              rightIcon={<ArrowRight />}
-              onClick={() => (window.location.href = ROUTES.PRODUCTS)}
-            >
-              쇼핑 시작하기
-            </Button>
-          </div>
-        </div>
-      </section>
+      <HeroBanner />
 
       {/* Categories Section */}
       <section className={styles.section}>
